@@ -21,6 +21,7 @@ class PlaylistController extends Controller
         return view('playlists.list', ['playlists'=>Playlist::all()]);
     }
 
+    // toont een formulier waarin je de naam kunt invullen en toont de geselecteerde songs
     // http://laravel-install-demo.test/playlist/create
     public function create() {
         $sp = new SongsInSession();
@@ -29,6 +30,8 @@ class PlaylistController extends Controller
         return view ('playlists.create')->with('songs_in_session', $songs_in_session);
     }
 
+    // het formulier dat bij de /create/ is ingevuld, wordt na klik op "opslaan" hierheen gestuurd
+    // middels een POST request.
     public function store(Request $request) {
         $newPlaylist = Playlist::create($request->all());
 
@@ -36,7 +39,7 @@ class PlaylistController extends Controller
 
         // iterate all items currently in session
         foreach($sp->GetSongIDs() as $id) {
-            $newPlaylist->Songs()->attach($id);
+            $newPlaylist->Songs()->attach($id);     // vul de pivot table (kruistabel)
         }
 
         // clear items from session
