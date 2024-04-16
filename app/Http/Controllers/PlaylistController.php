@@ -17,8 +17,19 @@ class PlaylistController extends Controller
         //return view('dashboard');
     }
 
+    public function delete($playlist_id) {
+        $playlist = Playlist::findOrFail($playlist_id);
+
+        $playlist->delete();
+
+        $playlist->Songs()->detach();
+
+        return redirect('playlists')->with('status', 'Playlist ' . $playlist_id . ' verwijderd.');
+    }
+
     public function list () {
-        return view('playlists.list', ['playlists'=>Playlist::all()]);
+        $lists = PlayList::all();
+        return view('playlists.list', ['playlists'=>$lists]);
     }
 
     // toont een formulier waarin je de naam kunt invullen en toont de geselecteerde songs

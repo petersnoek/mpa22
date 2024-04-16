@@ -42,6 +42,7 @@ Route::get('/playlists', [App\Http\Controllers\PlaylistController::class, 'list'
 Route::get('/playlist/create', [App\Http\Controllers\PlaylistController::class, 'create'])->name('playlist.create');
 Route::get('/playlist/show/{id}', [App\Http\Controllers\PlaylistController::class, 'show'])->name('playlist.show');
 Route::post('/playlist/store', [App\Http\Controllers\PlaylistController::class, 'store'])->name('playlist.store');
+Route::get('/playlist/delete/{playlist_id}', [App\Http\Controllers\PlaylistController::class, 'delete'])->name('playlist.delete');
 
 Route::get('/playlist/add/{song_id}', [App\Http\Controllers\PlaylistController::class, 'addSongIDtoSession'])->name('playlist.add');
 
