@@ -32,8 +32,8 @@
 
                         <!-- Artiest -->
                         <div>
-                            <x-label for="artist" :value="__('Artiest')" />
-                            <x-input id="artist" class="block mt-1 w-full" type="artist" name="artist" :value="old('artist')" />
+                            <x-label for="duration" :value="__('Duur (seconden)')" />
+                            <x-input id="duration" class="block mt-1 w-full" type="duration" name="duration" :value="old('duration')" />
                         </div>
 
 
