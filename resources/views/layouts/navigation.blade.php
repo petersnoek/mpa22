@@ -24,6 +24,11 @@
                     <x-nav-link :href="route('songs')" :active="request()->routeIs('songs')">
                         {{ __('Songs') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('song.create')" :active="request()->routeIs('song.create')">
+                        {{ __('Create song') }}
+                    </x-nav-link>
+
                 </div>
             </div>
 

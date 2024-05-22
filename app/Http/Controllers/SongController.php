@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Playlist;
 use App\Models\Song;
 use App\Models\SongsInSession;
 use Illuminate\Http\Request;
@@ -15,7 +16,16 @@ class SongController extends Controller
         View::share('selected_count', $selected_count);
 
         $songs = Song::all();
-        // return view('songs.index', ['songs' => $songs, 'selected_count' => $selected_count]);
         return view('songs.index', ['songs' => $songs]);
+    }
+
+    public function create() {
+        return view('songs.create');
+    }
+
+    public function store(Request $request) {
+        $newSong = Song::create($request->all(['name']));
+
+        return redirect('songs')->with('status', 'Nieuwe song aangemaakt.');
     }
 }

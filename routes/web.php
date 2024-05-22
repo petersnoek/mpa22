@@ -48,6 +48,8 @@ Route::get('/playlist/add/{song_id}', [App\Http\Controllers\PlaylistController::
 
 // http://laravel-install-demo.test/songs
 Route::get('/songs', [App\Http\Controllers\SongController::class, 'index'])->name('songs');
+Route::get('/song/create', [App\Http\Controllers\SongController::class, 'create'])->name('song.create');
+Route::post('/song/store', [App\Http\Controllers\SongController::class, 'store'])->name('song.store');
 
 Route::get('/mail', [App\Http\Controllers\MailController::class, 'Send'])->name('mail.send')->middleware('auth');
 
